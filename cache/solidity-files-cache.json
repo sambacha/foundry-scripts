@@ -1,0 +1,372 @@
+{
+  "_format": "ethers-rs-sol-cache-2",
+  "files": {
+    "/Users/sbacha/foundry-scripts/lib/ds-test/src/test.sol": {
+      "lastModificationDate": 1645233164248,
+      "contentHash": "5d45a46528eaf8a26f0a8d93669f3148",
+      "sourceName": "lib/ds-test/src/test.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionRequirement": ">=0.4.23",
+      "artifacts": {}
+    },
+    "/Users/sbacha/foundry-scripts/src/__demo__.sol": {
+      "lastModificationDate": 1645232525623,
+      "contentHash": "8db294e1ea17b4f3c628b200e879cba7",
+      "sourceName": "src/__demo__.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionRequirement": ">=0.4.23",
+      "artifacts": {}
+    },
+    "/Users/sbacha/foundry-scripts/src/assert/DSAssert.sol": {
+      "lastModificationDate": 1645160566918,
+      "contentHash": "7da72a2eb4e278aed8bc0922f982c22c",
+      "sourceName": "src/assert/DSAssert.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "lib/ds-test/src/test.sol"
+      ],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {}
+    },
+    "/Users/sbacha/foundry-scripts/src/assert/DSAssertLibrary.sol": {
+      "lastModificationDate": 1645163157826,
+      "contentHash": "1a41998449e205628920e293dd20c75f",
+      "sourceName": "src/assert/DSAssertLibrary.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {}
+    },
+    "/Users/sbacha/foundry-scripts/src/hardhat/console.sol": {
+      "lastModificationDate": 1645261178000,
+      "contentHash": "cc4777addd464ea56fa35b1c45df0591",
+      "sourceName": "src/hardhat/console.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionRequirement": null,
+      "artifacts": {}
+    },
+    "/Users/sbacha/foundry-scripts/src/hevem/HEVMLibrary.sol": {
+      "lastModificationDate": 1645261178000,
+      "contentHash": "81443dbbb5735f47b675d218e942553a",
+      "sourceName": "src/hevem/HEVMLibrary.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.10",
+      "artifacts": {}
+    },
+    "/Users/sbacha/foundry-scripts/src/hevem/hevm.sol": {
+      "lastModificationDate": 1645261178000,
+      "contentHash": "9602c52af0341a8bd5fbebd9bcb06601",
+      "sourceName": "src/hevem/hevm.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionRequirement": ">=0.4.23",
+      "artifacts": {}
+    },
+    "/Users/sbacha/foundry-scripts/src/hevem/hevm.t.sol": {
+      "lastModificationDate": 1645261178000,
+      "contentHash": "f4adee90c2c2e768a3840b142dfccef2",
+      "sourceName": "src/hevem/hevm.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "src/hevem/hevm.sol"
+      ],
+      "versionRequirement": ">=0.4.23",
+      "artifacts": {}
+    },
+    "/Users/sbacha/foundry-scripts/src/test_demo/DemoTest.sol": {
+      "lastModificationDate": 1645164026254,
+      "contentHash": "e0e3f3f7c0167b7a73a73ee25ca32ed7",
+      "sourceName": "src/test_demo/DemoTest.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionRequirement": ">=0.4.23",
+      "artifacts": {}
+    },
+    "/Users/sbacha/foundry-scripts/src/test_demo/ds-test.t.sol": {
+      "lastModificationDate": 1644754125248,
+      "contentHash": "5d45a46528eaf8a26f0a8d93669f3148",
+      "sourceName": "src/test_demo/ds-test.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionRequirement": ">=0.4.23",
+      "artifacts": {}
+    },
+    "/Users/sbacha/foundry-scripts/src/test_harness/DappForge.sol": {
+      "lastModificationDate": 1645232081571,
+      "contentHash": "2bc08d7c406adabd0e06c037a87ca3de",
+      "sourceName": "src/test_harness/DappForge.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.6",
+      "artifacts": {}
+    },
+    "/Users/sbacha/foundry-scripts/src/test_harness/DappForge.t.sol": {
+      "lastModificationDate": 1645232081571,
+      "contentHash": "25526314720e54d7cdf7dadc1816bb51",
+      "sourceName": "src/test_harness/DappForge.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "lib/ds-test/src/test.sol",
+        "src/test_harness/DappForge.sol"
+      ],
+      "versionRequirement": "^0.8.6",
+      "artifacts": {}
+    }
+  }
+}
