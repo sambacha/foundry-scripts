@@ -5,10 +5,11 @@
   "main": "index.js",
   "directories": {
     "lib": "lib",
-    "contracts": "contracts"
+    "contracts": "src"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+   "compile": "forge build",
+   "check": "forge test"
   },
   "repository": {
     "type": "git",
