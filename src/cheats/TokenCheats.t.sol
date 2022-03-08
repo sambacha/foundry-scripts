@@ -29,10 +29,7 @@ contract TokenCheatsTest is DSTest, TokenCheats {
             giveTokens(address(this), currToken, 100 ether);
             assertEq(currToken.balanceOf(address(this)), 100 ether);
 
-            currToken.transfer(
-                0xBdEf5Ac3144deAeb9df6F56e86b0AD9C2dBDE530,
-                10 ether
-            );
+            currToken.transfer(0xBdEf5Ac3144deAeb9df6F56e86b0AD9C2dBDE530, 10 ether);
             assertEq(currToken.balanceOf(address(this)), 90 ether);
         }
     }
