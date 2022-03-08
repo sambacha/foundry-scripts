@@ -6,7 +6,7 @@ pragma solidity ^0.8.10;
 
 interface Hevm {
     // Set block.timestamp (newTimestamp)
-   function warp(uint256 x) external;
+    function warp(uint256 x) external;
 
     // Set block.height (newHeight)
     function roll(uint256 x) external;
@@ -15,22 +15,29 @@ interface Hevm {
     function fee(uint256) external;
 
     // Stores a value to an address' storage slot, (who, slot, value)
-   function store(address c,bytes32 loc,bytes32 val) external;
+    function store(
+        address c,
+        bytes32 loc,
+        bytes32 val
+    ) external;
 
     // Loads a storage slot from an address (who, slot)
-   function load(address c,bytes32 loc) external returns (bytes32 val);
-
+    function load(address c, bytes32 loc) external returns (bytes32 val);
 
     // Signs data, (privateKey, digest) => (r, v, s)
-   function sign(uint256 sk,bytes32 digest) external returns (uint8 v, bytes32 r, bytes32 s);
-
+    function sign(uint256 sk, bytes32 digest)
+        external
+        returns (
+            uint8 v,
+            bytes32 r,
+            bytes32 s
+        );
 
     // Gets address for a given private key, (privateKey) => (address)
-   function addr(uint256 sk) external returns (address addr);
+    function addr(uint256 sk) external returns (address addr);
 
     // Performs a foreign function call via terminal, (stringInputs) => (result)
-   function ffi(string[] calldata) external returns (bytes memory);
-
+    function ffi(string[] calldata) external returns (bytes memory);
 
     // Sets the *next* call's msg.sender to be the input address
     function prank(address) external;
@@ -62,9 +69,7 @@ interface Hevm {
     function record() external;
 
     // Gets all accessed reads and write slot from a recording session, for a given address
-    function accesses(address)
-        external
-        returns (bytes32[] memory reads, bytes32[] memory writes);
+    function accesses(address) external returns (bytes32[] memory reads, bytes32[] memory writes);
 }
 
 // This program is free software: you can redistribute it and/or modify

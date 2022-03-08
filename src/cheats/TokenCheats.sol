@@ -35,11 +35,7 @@ contract TokenCheats is DSTest {
                 return;
             } else {
                 // Keep going after restoring the original value
-                hevm.store(
-                    address(token),
-                    keccak256(abi.encode(recipient, uint256(i))),
-                    prevValue
-                );
+                hevm.store(address(token), keccak256(abi.encode(recipient, uint256(i))), prevValue);
             }
         }
 

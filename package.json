@@ -1,23 +1,29 @@
 {
   "name": "foundry-scripts",
-  "version": "1.0.0",
-  "description": "## Overview",
+  "version": "0.1.0",
+  "description": "ds-test, cheat codes, and scripts for foundry",
   "main": "index.js",
   "directories": {
     "lib": "lib"
+    "src": "src"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "fmt": "npx prettier --config prettier.config.js --write '**/*.sol'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sambacha/foundry-scripts.git"
   },
-  "keywords": [],
+  "keywords": ["foundry", "forge", "dapptools", "dapp", "ds-test", "solidity", "ethereum"],
   "author": "sam bacha",
-  "license": "ISC",
+  "license": "SEE LICENSE IN LICENSE",
   "bugs": {
     "url": "https://github.com/sambacha/foundry-scripts/issues"
   },
-  "homepage": "https://github.com/sambacha/foundry-scripts#readme"
+  "homepage": "https://github.com/sambacha/foundry-scripts#readme",
+  "devDependencies": {
+    "prettier": "^2.5.1",
+    "prettier-config-solidity": "^1.7.0",
+    "prettier-plugin-solidity": "^1.0.0-beta.19"
+  }
 }
