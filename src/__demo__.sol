@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 pragma solidity >=0.4.23;
 
-import "ds-test.t.sol";
+import "./ds-test/ds-test.sol";
 
 contract DemoTest is DSTest {
     function test_this() public pure {
@@ -237,7 +237,14 @@ contract DemoTest is DSTest {
 }
 
 contract DemoTestWithSetUp {
+
     function setUp() public {}
 
     function test_pass() public pure {}
+
+    function setUp() public {
+    }
+    function test_pass() public pure {
+    }
+
 }

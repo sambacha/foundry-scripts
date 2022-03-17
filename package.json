@@ -1,5 +1,6 @@
 {
   "name": "foundry-scripts",
+
   "version": "0.1.0",
   "description": "ds-test, cheat codes, and scripts for foundry",
   "main": "index.js",
@@ -9,13 +10,35 @@
   },
   "scripts": {
   "fmt": "npx prettier --config prettier.config.js --write '**/*.sol'"
+
+  "version": "1.0.0",
+  "description": "Useful Testing Contracts and Scripts for Foundry",
+  "files": [
+    "/src/**/*.sol",
+    "/out/src/*.json",
+    "!/src/mocks/**/*"
+  ],
+  "scripts": {
+    "solc": "solc --bin --abi --optimize --overwrite --bin-runtime --allow-paths src/mocks/ -o out/src/",
+    "compile": "forge builds"
+
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sambacha/foundry-scripts.git"
   },
+
   "keywords": ["foundry", "forge", "dapptools", "dapp", "ds-test", "solidity", "ethereum"],
   "author": "sam bacha",
+
+  "keywords": [
+    "foundry",
+    "scripts",
+    "ethereum",
+    "solidity"
+  ],
+  "author": "SEE CONTRIBUTORS",
+
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
     "url": "https://github.com/sambacha/foundry-scripts/issues"
