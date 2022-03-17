@@ -1,21 +1,28 @@
 {
   "name": "foundry-scripts",
   "version": "1.0.0",
-  "description": "## Overview",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "description": "Useful Testing Contracts and Scripts for Foundry",
+  "files": [
+    "/src/**/*.sol",
+    "/out/src/*.json",
+    "!/src/mocks/**/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "solc": "solc --bin --abi --optimize --overwrite --bin-runtime --allow-paths src/mocks/ -o out/src/",
+    "compile": "forge builds"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sambacha/foundry-scripts.git"
   },
-  "keywords": [],
-  "author": "sam bacha",
-  "license": "ISC",
+  "keywords": [
+    "foundry",
+    "scripts",
+    "ethereum",
+    "solidity"
+  ],
+  "author": "SEE CONTRIBUTORS",
+  "license": "SEE LICENSE IN LICENSE",
   "bugs": {
     "url": "https://github.com/sambacha/foundry-scripts/issues"
   },

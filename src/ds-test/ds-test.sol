@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-/// @title ds-test/assert-library
+/// @title DSTest
 
 pragma solidity ^0.8.0;
 
@@ -8,7 +8,6 @@ pragma solidity ^0.8.0;
 // solhint-disable var-name-mixedcase
 // solhint-disable quotes
 // solhint-disable state-visibility
-
 contract DSTest {
     event log                    (string);
     event logs                   (bytes);
