@@ -1,18 +1,14 @@
 /// SPDX-License-Identifier: MPL-2.0
-
-
-pragma solidity ^0.6.0 | ^0.7.0 | ^0.8.0;
-
 // ----------------------------------------------------------------------------
 //
 // debug-harness
 //
 // version 1.0.0
 //
-// <https://github.com/sambacha/forge                                                                                                                                                                                                                                                                                                                                        -scripts>
-// (c) BokkyPooBah / Bok Consulting Pty Ltd 2021. The MIT Licence.
+// <https://github.com/sambacha/foundry-scripts>
 // ----------------------------------------------------------------------------
 
+pragma solidity ^0.6.0 | ^0.7.0 | ^0.8.0;
 
 /// @title DebugHarness
 library DebugHarness {
