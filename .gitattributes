@@ -1,1 +1,4 @@
-*.sol linguist-language=Solidity
+# -*- mode: gitattributes; -*-
+justfile linguist-language=Make
+VERSION export-subst
+*.sh text eol=lf

@@ -1,6 +1,6 @@
 {
   "name": "foundry-scripts",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "ds-test, cheat codes, and scripts for foundry",
   "main": "index.js",
   "directories": {
@@ -8,20 +8,20 @@
     "src": "src"
   },
   "files": [
+    "justfile",
+    "/scripts/**/*.sh",
     "/src/**/*.sol",
     "/out/src/*.json",
-    "!/src/mocks/**/*"
+    "!/src/__test__/**/*"
   ],
   "scripts": {
     "solc": "solc --bin --abi --optimize --overwrite --bin-runtime --allow-paths src/mocks/ -o out/src/",
     "compile": "forge builds"
-
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sambacha/foundry-scripts.git"
   },
-
   "keywords": [
     "foundry",
     "scripts",
