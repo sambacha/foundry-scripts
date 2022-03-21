@@ -1,0 +1,9 @@
+if [[ -n "$AUTO_DEPLOY" ]]; then
+  log info "\$AUTO_DEPLOY set: Triggering deploy so environment variable updates are applied"
+  if ! cloudflare_deploy POST > /dev/null; then
+    log error "[FAILURE]: Deployment failed see deployment logs\n" && exit 51
+  else
+    log info "Deployment triggered successfully\n"
+  fi
+fi
+exit 0
