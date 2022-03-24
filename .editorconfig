@@ -69,3 +69,13 @@ trim_trailing_whitespace    = true
 # Match diffs, avoid to trim trailing whitespace
 [*.{diff,patch}]
 trim_trailing_whitespace = false
+
+
+# Ignore fixtures and vendored files
+[{dist,artifacts,vendor,test/fixtures}/**]
+charset = unset
+end_of_line = unset
+indent_size = unset
+indent_style = unset
+insert_final_newline = unset
+trim_trailing_spaces = unset
