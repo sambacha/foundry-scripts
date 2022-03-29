@@ -1,8 +1,34 @@
 # `foundry-scripts`
 
-> Aggregated Testing Contract Bundle
+> Shell Utilities and Aggregated Testing Contract Bundles
 
-## Overview
+## Command Line
+
+| $CMD            	| Type 	|                 Alias                	|                                                                                                         Description 	|
+|-----------------	|------	|:------------------------------------:	|--------------------------------------------------------------------------------------------------------------------:	|
+| bind            	|      	|       opts= "-c -r -o -d -w -h"      	|                                                                     Generate rust bindings for your smart contracts 	|
+| build           	|      	|                                      	|                                                                                          Build your smart contracts 	|
+| clean           	|      	|                                      	|                                                                   Removes the build artifacts and cache directories 	|
+| completions     	|      	|                                      	|                                                                                   Generate shell completions script 	|
+| config          	|      	|    opts= "-c -r -o -d -w -f -v -h:   	|                                                                               Shows the currently set config values 	|
+| create          	|      	| opts= "-c -r -o -d -w -f -i -l -t -h 	|                                                                                          Deploy a compiled contract 	|
+| flatten         	|      	|          opts= "-o -c -r -h"         	|                                                                              Concats a file with all of its imports 	|
+| help            	|      	|                                      	|                                                           Print this message or the help of the given subcommand(s) 	|
+| init            	|      	|           opts= "-t -q -h"           	|                                                                              Initializes a new forge sample project 	|
+| inspect         	|      	|                                      	|                                                        Outputs a contract in a specified format (ir, assembly, ...) 	|
+| install         	|      	|                                      	| Installs one or more dependencies as git submodules (will install existing dependencies if no arguments	are	provided) 	|
+| remappings      	|      	|                                      	|                                                    Prints the automatically inferred remappings for this repository 	|
+| remove          	|      	|                                      	|                                                                Removes one or more dependencies from git submodules 	|
+| run             	|      	|                                      	|                                                                             Run a single smart contract as a script 	|
+| snapshot        	|      	|                                      	|                                                                         Creates a snapshot of each test's gas usage 	|
+| test            	|      	|                                      	|                                                                                           Test your smart contracts 	|
+| tree            	|      	|                                      	|                                                      Display a tree visualization of the project's dependency graph 	|
+| update          	|      	|                                      	|                                                                                    Fetches all upstream lib changes 	|
+| verify-check    	|      	|                                      	|                                     Check verification status on Etherscan. Requires `ETHERSCAN_API_KEY` to be set. 	|
+| verify-contract 	|      	|           opts= "-c -r -h"           	|                       Verify your smart contracts source code on Etherscan. Requires `ETHERSCAN_API_KEY` to be set. 	|
+
+
+## Contracts
 
 ### `assertRevert`
 

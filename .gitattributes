@@ -2,3 +2,4 @@
 justfile linguist-language=Make
 VERSION export-subst
 *.sh text eol=lf
+*.shlib linguist-language=Bash

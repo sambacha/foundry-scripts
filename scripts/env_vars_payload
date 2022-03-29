@@ -1,0 +1,3 @@
+env_vars_payload () {
+  echo "{\"deployment_configs\":{\"$1\":{\"env_vars\":$2}}}"
+}
