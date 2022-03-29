@@ -16,7 +16,8 @@
   ],
   "scripts": {
     "solc": "solc --bin --abi --optimize --overwrite --bin-runtime --allow-paths src/mocks/ -o out/src/",
-    "compile": "forge builds"
+    "mk": "just build",
+    "gen:salt": "node gen-salt.mjs"
   },
   "repository": {
     "type": "git",
@@ -33,5 +34,9 @@
   "bugs": {
     "url": "https://github.com/sambacha/foundry-scripts/issues"
   },
-  "homepage": "https://github.com/sambacha/foundry-scripts#readme"
+  "homepage": "https://github.com/sambacha/foundry-scripts#readme",
+  "devDependencies": {
+    "dotenv": "^16.0.0",
+    "ethers": "^5.6.2"
+  },
 }
