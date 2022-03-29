@@ -24,6 +24,13 @@ run:
 install:
   forge install
 
+check:
+  forge test -f $ETH_RPC_URL -vvv
+  
+payload:
+  env_vars_payload () {
+    echo "{\"deployment_configs\":{\"$1\":{\"env_vars\":$2}}}"
+ }
 
 # mode: makefile
 # End:
