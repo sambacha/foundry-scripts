@@ -1,26 +1,34 @@
-# Disco Testing Contract Bundle 
+# `foundry-scripts`
+
+> justfile and shell scripts
 
 ## Overview
 
-### assertRevert 
+> `just` is the new `make`
 
-```solidity
+- load `.env` via `justfile`
+- run tests
+- can even execute nodejs/python/etc scripts via `justfile`
 
-    function assertRevert(function() external payable) public {
-        revert();
-    }
 
-    /**
-     * @notice Asserts that the given function call fails with the given error message.
-     */
-    function assertRevert(function() external payable, bytes32 _errorMessage) public {
-        revert();
-    }
+## Example
 
-    /**
-     * @notice Asserts that the given function call fails with the given error message.
-     */
-    function assertRevert(function() external payable, bytes32 _errorMessage, bytes32 _errorData) public {
-        revert();
-    }
+```shell
+$ just
+just --list
+Available recipes:
+    build                     # build using forge
+    test                      # default test scripts
+    test-local *commands=""
+    test-mainnet *commands="" # run mainnet fork forge tests (all files with the extension .debug.sol)
 ```
+
+
+## Repo Example
+
+[see https://github.com/sambacha/foundry-justfile-example](https://github.com/sambacha/foundry-justfile-example)
+
+
+## License
+
+Apache-2.0/MIT
