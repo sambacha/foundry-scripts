@@ -1,6 +1,6 @@
 #!/usr/bin/env just --justfile
 # @title Foundry Justfile
-# @version: 0.2.1
+# @version: 0.2.2
 # @license ISC
 # 
 # TODO:
@@ -54,7 +54,8 @@ build: && _timer
 	cd {{ invocation_directory() }}; forge build --sizes --names --force
 
 # [TEST] mainnet test
-	@cd {{ invocation_directory() }}; forge test --match-path "*.t.sol" --fork-url {{ MAINNET_RPC }}
+build-mainnet: && _timer
+	cd {{ invocation_directory() }}; forge test --match-path "*.t.sol" --fork-url {{ MAINNET_RPC }}
 
 # [TEST] default test scripts
 test: test-local
