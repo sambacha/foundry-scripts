@@ -1,6 +1,6 @@
 #!/usr/bin/env just --justfile
 # @title Foundry Justfile
-# @version: 0.2.2
+# @version: 0.2.3
 # @license ISC
 # 
 # TODO:
@@ -74,20 +74,10 @@ test-debug *commands="": && _timer
 
 
 # [GAS] default gas snapshot script
-gas-snapshot: gas-snapshot-local
-
-# [GAS] get gas snapshot from local tests and save it to file
-gas-snapshot-local:
-    cd {{ invocation_directory() }}; \
-    just test-local | grep 'gas:' | cut -d " " -f 2-4 | sort > \
-    {{ justfile_directory() }}/gas-snapshots/.$( \
-        cat {{ invocation_directory() }}/package.json | jq .name | tr -d '"' | cut -d"/" -f2- \
-    )
-# [GAS] get gas snapshot timer
-forge-gas-snapshot: && _timer
+gas-snapshot: && _timer
 	@cd {{ invocation_directory() }}; forge snapshot --no-match-path ".*.*"
 
-forge-gas-snapshot-diff: && _timer
+gas-snapshot-diff: && _timer
 	@cd {{ invocation_directory() }}; forge snapshot --no-match-path ".*.*" --diff
 
 # Solidity test ffi callback to get Target decimals for the base Mock Target token
@@ -102,6 +92,11 @@ start_time := `date +%s`
 _timer:
 	@echo "[TASK]: Executed in $(($(date +%s) - {{ start_time }})) seconds"
 
+
 # mode: makefile
 # End:
 # vim: set ft=make :
+# Make sure this script ends with code 0
+:
+
+# vi: set ts=4 sw=4 noet :
