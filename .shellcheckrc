@@ -1,0 +1,13 @@
+shell=bash
+enable=deprecate-which
+enable=require-double-brackets
+disable=SC1090  # sourcing files; ENV SHELLCHECK_OPTS='--shell=bash --exclude=SC1090'
+disable=SC2034  # for localizing variables set in called functions
+disable=SC2128  # style choice
+
+# TODO: check these
+#disable=SC2016
+#disable=SC2086
+#disable=SC2155
+#disable=SC2206  # suggested alternatives fail in posix mode or use temp files
+#disable=SC2207  # suggested alternatives fail in posix mode or use temp files
