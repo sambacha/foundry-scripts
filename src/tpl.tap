@@ -1,0 +1,4 @@
+#:~:shell=`
+/usr/local/sbin
+$ENV_ROOT/bin
+`
