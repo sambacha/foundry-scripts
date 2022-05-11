@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+if [ -d "$HOME/.foundry/hooks" ]; then
+  for hook_script in "$HOME/.foundry/hooks/"*; do
+    if [ ! -x "${hook_script}" ]; then
+      continue
+    fi
+
+    reqs=($(basename "${hook_script}" | tr '+' "\n"))
+    satisfied_reqs=0
+
+    for req in "${reqs[@]}"; do
+      if hash "${req}" 2>/dev/null; then
+        satisfied_reqs="$((satisfied_reqs+1))"
+      fi
+    done
+
+    if [ "${#reqs[@]}" -eq "${satisfied_reqs}" ]; then
+      source "${hook_script}"
+    fi
+  done
+fi
