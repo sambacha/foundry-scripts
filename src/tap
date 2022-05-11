@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# ~~~ tap ~~~
+# @tap
+# @summary Although filtering is not strictly necessary, as shells will ignore non-existent $PATH elements.
+# We do so because:
+# 1. it trades off a tiny O(1) increase in Bash startup time, for O(N) quicker invocations of commands; 
+# 2. we an be sure of $PATH, as you can assume existence.
+# @note sources a `taps` file is a newline-separated list of `bin` paths. 
+# @note that each line is evaled by Bash, so you can use env-vars in these paths.
+# 
+
+while IFS='' read -r tap_dir || [[ -n "${tap_dir}" ]]; do
+  tap_dir="$(eval echo -e "${tap_dir}")"
+
+  if [ -d "${tap_dir}" ]; then
+    PATH="${tap_dir}:$PATH"
+  fi
+done < "$HOME/.foundry/taps"
