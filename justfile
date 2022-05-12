@@ -72,7 +72,8 @@ test-mainnet *commands="": && _timer
 test-debug *commands="": && _timer
 	cd {{ invocation_directory() }}; forge test --rpc-url {{ MAINNET_RPC }} --match-path "*.t.sol" {{ commands }}
 
-gas-cov: forge test --gas-report
+gas-cov: 
+	forge test --gas-report
 
 # [GAS] default gas snapshot script
 gas-snapshot: gas-snapshot-local
