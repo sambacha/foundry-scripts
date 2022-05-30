@@ -1,5 +1,5 @@
-pragma solidity 0.5.4;
-
+// SPDX-License-Identifier: GPL-2.0-Only 
+pragma solidity ^0.5.17;
 
 library Callable {
     struct CallResult {
