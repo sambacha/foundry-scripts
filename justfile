@@ -49,6 +49,25 @@ set export
 size:
 	forge build --sizes --force
 
+# [deploy]: deploy contract
+deploy-contract:; 
+	forge create $(contract) \
+	--constructor-args $(constructorArgs) \
+	--rpc-url $(url) \
+	--private-key $(privateKey)
+
+
+# [verify]: verify contract
+verify-contract:; 
+	forge verify-contract \
+	--chain-id $(chainId) \
+	--constructor-args `cast abi-encode "$(constructorSig)" $(constructorArgs)` \
+	--compiler-version $(compilerVersion) \
+	--num-of-optimizations 200 \
+	{{ DEPLOYED_ADDRESS }} \
+	{{ CONTRACT_NAME }} \
+	{{ ETHERSCAN_API_KEY }}
+
 # Build Output
 build: && _timer
 	cd {{ invocation_directory() }}; forge build --sizes --names --force
