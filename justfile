@@ -1,10 +1,8 @@
 #!/usr/bin/env just --justfile
 # @title Foundry Justfile
-# @version: 0.2.2
-# @license ISC
-# 
-# TODO:
-#   document justfile using https://github.com/tests-always-included/tomdoc.sh
+# @version: 0.3.0
+# @license Apache-2.0 OR MIT
+# @see {@link https://github.com/sambacha/foundry-scripts}
 
 bt := '0'
 export RUST_BACKTRACE := bt
@@ -49,16 +47,21 @@ set export
 size:
 	forge build --sizes --force
 
-# [deploy]: deploy contract
-deploy-contract:; 
+# [DEPLOY]: Environemtn Config
+DEPLOYED_ADDRESS := "0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+CONTRACT_NAME := ''
+ETHERSCAN_API_KEY := ''
+
+# [DEPLOY]: Deploy contract
+deploy-contract:
 	forge create $(contract) \
 	--constructor-args $(constructorArgs) \
 	--rpc-url $(url) \
 	--private-key $(privateKey)
 
 
-# [verify]: verify contract
-verify-contract:; 
+# [DEPLOY]: Verify contract
+verify-contract:
 	forge verify-contract \
 	--chain-id $(chainId) \
 	--constructor-args `cast abi-encode "$(constructorSig)" $(constructorArgs)` \
@@ -68,7 +71,7 @@ verify-contract:;
 	{{ CONTRACT_NAME }} \
 	{{ ETHERSCAN_API_KEY }}
 
-# Build Output
+# [BUILD]: Timer
 build: && _timer
 	cd {{ invocation_directory() }}; forge build --sizes --names --force
 
