@@ -1,7 +1,8 @@
-pragma solidity 0.5.4;
+// SPDX-License-Identifier: GPL-2.0-Only 
+pragma solidity ^0.5.17;
 pragma experimental ABIEncoderV2;
 
-import "openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./Callable.sol";
 import "./TestUtils.sol";
 import "./TestAccount.sol";
