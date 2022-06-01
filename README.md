@@ -76,6 +76,9 @@ fi
 # ex: ts=4 sw=4 et filetype=sh
 ```
 
+### Developer notes
+
+If you modify the `justfile`, run `just --fmt --unstable` and it will format the `justfile` itself.
 
 ## Repo Example
 
