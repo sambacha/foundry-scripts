@@ -1,6 +1,6 @@
 #!/usr/bin/env just --justfile
 # @title Foundry Justfile
-# @version: 0.4.0
+# @version: 0.4.1
 # @license Apache-2.0 OR MIT
 # @see {@link https://github.com/sambacha/foundry-scripts}
 
@@ -17,6 +17,9 @@ tl:
 
 sl:
     forge snapshot --list
+    
+dumpbuild:
+  ETHERS_SOLC_LOG=in=in.json,out=out.json;  forge build --force
 
 # load .env file
 
