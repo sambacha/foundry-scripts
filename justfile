@@ -6,6 +6,10 @@
 
 bt := '0'
 export RUST_BACKTRACE := bt
+
+et := 'ethers=trace'
+export RUST_LOG := et
+
 log := "warn"
 export JUST_LOG := log
 
