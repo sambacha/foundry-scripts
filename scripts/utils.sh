@@ -18,7 +18,6 @@
 # log_set_logging_lvl - If not defined, set ${logging_lvl}=error
 # logging_lvl_validate - Validate if set loging level is suported.
 
-
 ### Error Handling
 
 exit_with_error() {
@@ -35,40 +34,43 @@ exit_on_error() {
   fi
 }
 
-random() { cat /dev/urandom | env LC_CTYPE=C tr -dc $1 | head -c $2; echo; }
+random() {
+  cat /dev/urandom | env LC_CTYPE=C tr -dc $1 | head -c $2
+  echo
+}
 
 randompw() {
   # Generate a random password (16 characters) that starts with an alpha character
-  echo `random [:alpha:] 1``random [:alnum:] 15`
+  echo $(random [:alpha:] 1)$(random [:alnum:] 15)
 }
 
 ### Logging
 
-log_debug () {
+log_debug() {
   if [ "${logging_lvl}" == "debug" ]; then echo "[Debug] $@"; fi
 }
 
-log_info () {
+log_info() {
   if [[ "${logging_lvl}" =~ (debug|info) ]]; then echo "[Info] $@"; fi
 }
 
-log_error () {
+log_error() {
   if [[ "${logging_lvl}" =~ (debug|info|error) ]]; then echo && echo "[Error] $@"; fi
 }
 
-log_set_logging_lvl () {
+log_set_logging_lvl() {
   if [ -z ${logging_lvl} ]; then
     logging_lvl="error"
     echo "[Info] Logging level not set, defaulting to 'error'."
   fi
 }
 
-logging_lvl_validate () {
+logging_lvl_validate() {
   if [[ "${logging_lvl}" =~ (debug|info|error) ]]; then
     log_debug " [Validation Passed] logging_lvl = '${logging_lvl}'"
   else
     exit_with_error " [Validation Failed] Unsupported logging level '${logging_lvl}'. Supported loggin levels are 'debug|info|error'."
-  fi  
+  fi
 }
 
 # Function wrapper for friendly logging and basic timing

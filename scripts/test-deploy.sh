@@ -17,9 +17,9 @@ greeting=$(seth call $addr 'greeting()(string)')
 
 # set it to a value
 seth send $addr \
-    'greet(string memory)' '"yo"' \
-    --keystore $TMPDIR/8545/keystore \
-    --password /dev/null
+  'greet(string memory)' '"yo"' \
+  --keystore $TMPDIR/8545/keystore \
+  --password /dev/null
 
 sleep 1
 

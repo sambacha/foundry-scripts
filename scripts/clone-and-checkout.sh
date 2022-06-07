@@ -11,5 +11,5 @@ function cloneCheckoutCommit() {
     (cd "$cloneDirName" && [ -z "$(git status --porcelain)" ] && git checkout "$2") || (echo Unclean "$cloneDirName" && exit 1)
     return
   fi
-  git clone https://github.com/"$1" && (cd "$cloneDirName" && git checkout "$2" )
+  git clone https://github.com/"$1" && (cd "$cloneDirName" && git checkout "$2")
 }

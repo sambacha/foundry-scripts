@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -o errexit
 
-git --version 
+git --version
 
 echo "[CONFIG]: Updating and init submodules"
 git config --global diff.submodule log

@@ -8,7 +8,7 @@ set -eo pipefail
 # import config with arguments based on contract and network
 . $(dirname $0)/helper-config.sh
 
-# Deploy 
+# Deploy
 # Contract will be counter unless overriden on the command line
 : ${CONTRACT:=Greeter}
 echo "Deploying $CONTRACT to $NETWORK with arguments: $arguments"

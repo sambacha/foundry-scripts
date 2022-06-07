@@ -14,9 +14,9 @@ trap "exit 1" SIGINT SIGTERM
 
 # test helper
 error() {
-    printf 1>&2 "fail: function '%s' at line %d.\n" "${FUNCNAME[1]}"  "${BASH_LINENO[0]}"
-    printf 1>&2 "got: %s" "$output"
-    exit 1
+  printf 1>&2 "fail: function '%s' at line %d.\n" "${FUNCNAME[1]}" "${BASH_LINENO[0]}"
+  printf 1>&2 "got: %s" "$output"
+  exit 1
 }
 
 # launch the testnet

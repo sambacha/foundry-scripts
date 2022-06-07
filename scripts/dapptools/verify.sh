@@ -18,53 +18,54 @@ set -e
 
 chain=$(seth chain)
 case "$chain" in
-  ethlive|mainnet)
-    export ETHERSCAN_API_URL=https://api.etherscan.io/api
-    export ETHERSCAN_URL=https://etherscan.io/address
-    ;;
-  ropsten|kovan|rinkeby|goerli)
-    export ETHERSCAN_API_URL=https://api-$chain.etherscan.io/api
-    export ETHERSCAN_URL=https://$chain.etherscan.io/address
-    ;;
-  optimism-mainnet)
-    export ETHERSCAN_API_URL=https://api-optimistic.etherscan.io/api
-    export ETHERSCAN_URL=https://optimistic.etherscan.io/address
-    ;;
-  optimism-kovan)
-    export ETHERSCAN_API_URL=https://api-kovan-optimistic.etherscan.io/api
-    export ETHERSCAN_URL=https://kovan-optimistic.etherscan.io/address
-    ;;
-  polygon)
-    export ETHERSCAN_API_URL=https://api.polygonscan.com/api
-    export ETHERSCAN_URL=https://polygonscan.com/address
-    ;;
-  polygon-mumbai)
-    export ETHERSCAN_API_URL=https://api-testnet.polygonscan.com/api
-    export ETHERSCAN_URL=https://mumbai.polygonscan.com/address
-    ;;
-  fantom)
-    export ETHERSCAN_API_URL=https://api.ftmscan.com/api
-    export ETHERSCAN_URL=https://ftmscan.com/address
-    ;;
-  arbitrum-mainnet)
-    export ETHERSCAN_API_URL=https://api.arbiscan.io/api
-    export ETHERSCAN_URL=https://arbiscan.io/address
-    ;;
-  arbitrum-rinkeby)
-    export ETHERSCAN_API_URL=https://api-testnet.arbiscan.io/api
-    export ETHERSCAN_URL=https://testnet.arbiscan.io/address
-    ;;
-  avax-mainnet)
-    export ETHERSCAN_API_URL=https://api.snowtrace.io/api
-    export ETHERSCAN_URL=https://snowtrace.io/address
-    ;;
-  avax-fuji)
-    export ETHERSCAN_API_URL=https://api-testnet.snowtrace.io/api
-    export ETHERSCAN_URL=https://testnet.snowtrace.io/address
-    ;;
-  *)
-    echo >&2 "Verification only works on mainnet, ropsten, kovan, rinkeby, goerli, polygon, fantom, arbitrum and avax."
-    exit 1
+ethlive | mainnet)
+  export ETHERSCAN_API_URL=https://api.etherscan.io/api
+  export ETHERSCAN_URL=https://etherscan.io/address
+  ;;
+ropsten | kovan | rinkeby | goerli)
+  export ETHERSCAN_API_URL=https://api-$chain.etherscan.io/api
+  export ETHERSCAN_URL=https://$chain.etherscan.io/address
+  ;;
+optimism-mainnet)
+  export ETHERSCAN_API_URL=https://api-optimistic.etherscan.io/api
+  export ETHERSCAN_URL=https://optimistic.etherscan.io/address
+  ;;
+optimism-kovan)
+  export ETHERSCAN_API_URL=https://api-kovan-optimistic.etherscan.io/api
+  export ETHERSCAN_URL=https://kovan-optimistic.etherscan.io/address
+  ;;
+polygon)
+  export ETHERSCAN_API_URL=https://api.polygonscan.com/api
+  export ETHERSCAN_URL=https://polygonscan.com/address
+  ;;
+polygon-mumbai)
+  export ETHERSCAN_API_URL=https://api-testnet.polygonscan.com/api
+  export ETHERSCAN_URL=https://mumbai.polygonscan.com/address
+  ;;
+fantom)
+  export ETHERSCAN_API_URL=https://api.ftmscan.com/api
+  export ETHERSCAN_URL=https://ftmscan.com/address
+  ;;
+arbitrum-mainnet)
+  export ETHERSCAN_API_URL=https://api.arbiscan.io/api
+  export ETHERSCAN_URL=https://arbiscan.io/address
+  ;;
+arbitrum-rinkeby)
+  export ETHERSCAN_API_URL=https://api-testnet.arbiscan.io/api
+  export ETHERSCAN_URL=https://testnet.arbiscan.io/address
+  ;;
+avax-mainnet)
+  export ETHERSCAN_API_URL=https://api.snowtrace.io/api
+  export ETHERSCAN_URL=https://snowtrace.io/address
+  ;;
+avax-fuji)
+  export ETHERSCAN_API_URL=https://api-testnet.snowtrace.io/api
+  export ETHERSCAN_URL=https://testnet.snowtrace.io/address
+  ;;
+*)
+  echo >&2 "Verification only works on mainnet, ropsten, kovan, rinkeby, goerli, polygon, fantom, arbitrum and avax."
+  exit 1
+  ;;
 esac
 
 path=${1?contractname}
@@ -73,9 +74,9 @@ address=${2?contractaddress}
 
 # combined-json has a sourceList field
 if [[ $(jq .sourceList "$DAPP_JSON") == null ]]; then
-    contract=$(<"$DAPP_JSON" jq -r ".contracts[\"${path/:*/}\"][\"$name\"]")
-else 
-    contract=$(<"$DAPP_JSON" jq -r ".contracts[\"$path\"]")
+  contract=$(jq <"$DAPP_JSON" -r ".contracts[\"${path/:*/}\"][\"$name\"]")
+else
+  contract=$(jq <"$DAPP_JSON" -r ".contracts[\"$path\"]")
 fi
 meta=$(jshon <<<"$contract" -e metadata -u)
 version=$(jshon <<<"$meta" -e compiler -e version -u)
@@ -83,16 +84,15 @@ file=$(jshon <<<"$meta" -e settings -e compilationTarget -k)
 optimized=$(jshon <<<"$meta" -e settings -e optimizer -e enabled -u)
 runs=$(jshon <<<"$meta" -e settings -e optimizer -e runs -u)
 
-abi=$(jq '.["abi"]' -r <<< "$contract")
-type=$(seth --abi-constructor <<< "$abi")
+abi=$(jq '.["abi"]' -r <<<"$contract")
+type=$(seth --abi-constructor <<<"$abi")
 constructor=${type/constructor/${1#*:}}
 
 if [[ $3 ]]; then
-    constructorArguments=$(seth calldata "$constructor" "${@:3}")
-    constructorArguments=${constructorArguments#0x}
-    constructorArguments=${constructorArguments:8}
+  constructorArguments=$(seth calldata "$constructor" "${@:3}")
+  constructorArguments=${constructorArguments#0x}
+  constructorArguments=${constructorArguments:8}
 fi
-
 
 # Etherscan requires leading 'v' which isn't in the artifacts
 version="v${version}"
@@ -114,7 +114,6 @@ if [[ $version_list != *"$version"* ]]; then
   fi
 fi
 
-
 if [[ "$optimized" = "true" ]]; then
   optimized=1
 else
@@ -130,7 +129,8 @@ params=(
 
 source=$(hevm flatten --source-file "$file" --json-file "$DAPP_JSON" --dapp-root "$DAPP_ROOT")
 
-source=$(cat <<.
+source=$(
+  cat <<.
 // Verified using https://dapp.tools
 $source
 .
@@ -143,9 +143,9 @@ while [ $count -lt 5 ]; do
   sleep 10
 
   response=$(curl -fsS "$ETHERSCAN_API_URL" -d "$query" \
-  --data-urlencode "compilerversion=$version" \
-  --data-urlencode "sourceCode@"<(echo "$source") \
-  --data-urlencode "constructorArguements=$constructorArguments" -X POST)
+    --data-urlencode "compilerversion=$version" \
+    --data-urlencode "sourceCode@"<(echo "$source") \
+    --data-urlencode "constructorArguements=$constructorArguments" -X POST)
   # NOTE: the Arguements typo is in etherscan's API
 
   status=$(jshon <<<"$response" -e status -u)
@@ -153,7 +153,7 @@ while [ $count -lt 5 ]; do
   message=$(jshon <<<"$response" -e message -u)
   count=$((count + 1))
 
-  [[ $status = 1 ]] && break;
+  [[ $status = 1 ]] && break
 done
 
 [[ $status = 0 && $message = "Contract source code already verified" ]] && {
@@ -169,14 +169,11 @@ done
   exit 1
 }
 
-
-
-
 [[ $DAPP_ASYNC == yes ]] && exit
 
 sleep 20
 response=$(curl -fsS "$ETHERSCAN_API_URL" \
--d "module=contract&action=checkverifystatus&guid=$guid&apikey=$ETHERSCAN_API_KEY")
+  -d "module=contract&action=checkverifystatus&guid=$guid&apikey=$ETHERSCAN_API_KEY")
 
 status=$(jshon <<<"$response" -e status -u)
 result=$(jshon <<<"$response" -e result -u)
