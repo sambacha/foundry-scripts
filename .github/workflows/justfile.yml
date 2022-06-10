@@ -11,7 +11,6 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
     - name: Setup just
@@ -24,7 +23,7 @@ jobs:
       shell: bash
 
   test-version:
-    needs: test-latest
+    needs: pipeline
     strategy:
       matrix:
         just-version: [0.5.11, 0.6.1, 0.7.3, 0.8.7, 0.9.9, 0.10.0]
