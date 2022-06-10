@@ -15,7 +15,7 @@ env:
 
 jobs:
   pipeline:
-    name: Node ${{ matrix.just-version }} on ${{ matrix.os }}
+    name: Justfile ${{ matrix.just-version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -34,7 +34,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Test
       run: |
-        [ "$(just --justfile tests/Justfile)" = "Test..." ]
+        [ "$(just --justfile __tests__/justfile)" = "Test..." ]
       shell: bash
 
   test-version:
