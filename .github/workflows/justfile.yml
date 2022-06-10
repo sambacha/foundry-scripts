@@ -12,6 +12,7 @@ env:
   COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
   PULL_NUMBER: ${{ github.event.pull_request.number }}
   RUN_ID: ${{ github.run_id }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   pipeline:
@@ -41,18 +42,32 @@ jobs:
     needs: pipeline
     strategy:
       matrix:
-        just-version: [0.5.11, 0.6.1, 0.7.3, 0.8.7, 0.9.9, 0.10.0]
+        just-version: [0.9.9, 0.10.0]
+        
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+
     - uses: extractions/setup-just@v1
       with:
         just-version: ${{ matrix.just-version }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Check version
       run: just --version | grep -E "^just v?${{ matrix.just-version }}$"
     - name: Test
       run: |
-        [ "$(just --justfile __tests__/justfile)" = "Test..." ]
+        [ "$(just --justfile __tests__/test.justfile)" = "Test..." ]
         [ "$(just --justfile justfile)" = "Test..." ]
+
+    - name: Install Foundry
+      uses: foundry-rs/foundry-toolchain@v1
+      with:
+        version: nightly
+
+    - name: setup foundry test package
+      run: |
+        cd __tests__; forge init --no-commit --no-git --force;
+
+    - name: dumpbuild
+      run: |
+        [ "$(just --justfile __tests__/justfile)" = "dumpbuild" ]
