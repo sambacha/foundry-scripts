@@ -1,6 +1,6 @@
 # [`foundry-scripts`](https://github.com/sambacha/foundry-scripts)
 
-<img alt="a picture of justfile recipes" align="right" src="https://raw.githubusercontent.com/sambacha/foundry-scripts/c6b6ef62dd0197975a765d655feae4302088bcef/.github/readme_justfile.svg" height="320"></img>
+<img alt="a picture of justfile recipes" align="right" src="https://raw.githubusercontent.com/sambacha/foundry-scripts/c6b6ef62dd0197975a765d655feae4302088bcef/.github/readme_justfile.svg" height="300"></img>
 
 <br />
  
@@ -11,8 +11,9 @@
 
 > `just` is the new `make`
 
-- load `.env` via `justfile`
-- run tests;  etc etc
+> load `.env` via `justfile`
+> run tests; etc;
+> `TLR`s; two letter recipes
 <br />
 
 ## Quickstart
@@ -21,7 +22,6 @@ In your repo, you execute the command `just` and add a `recipe` after to run the
 
 ```shell
 $ just
-# just --list
 Available recipes:
     build                     # [BUILD]: Timer
     build-mainnet             # [TEST] mainnet test
@@ -42,7 +42,9 @@ Available recipes:
     verify-contract           # [DEPLOY]: Verify contract
 ```
 
-### two-letter recipes
+### Two Letter Recipes
+
+> TLR's
 
 ```shell
 just tl
