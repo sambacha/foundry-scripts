@@ -4,3 +4,8 @@ node_modules
 cache/
 artifacts
 coverage/
+__tests__/src
+__tests__/out
+__tests__/lib
+__tests__/cache
+__tests__/foundry.toml

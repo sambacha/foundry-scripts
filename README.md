@@ -1,29 +1,61 @@
-# `foundry-scripts`
+# [`foundry-scripts`](https://github.com/sambacha/foundry-scripts)
 
-> `justfile` and shell scripts
+<img alt="a picture of justfile recipes" align="right" src="https://raw.githubusercontent.com/sambacha/foundry-scripts/c6b6ef62dd0197975a765d655feae4302088bcef/.github/readme_justfile.svg" height="320"></img>
 
+<br />
+ 
 ## Overview
+
+[![justfile](https://github.com/sambacha/foundry-scripts/actions/workflows/justfile.yml/badge.svg)](https://github.com/sambacha/foundry-scripts/actions/workflows/justfile.yml) 
+> GitHub Action verifes the recipes by creating a dummy foundry repo
 
 > `just` is the new `make`
 
 - load `.env` via `justfile`
-- run tests
-- can even execute nodejs/python/etc scripts via `justfile`
-
+- run tests;  etc etc
+<br />
 
 ## Quickstart
 
-In your repo, you execute the command `just` 
+In your repo, you execute the command `just` and add a `recipe` after to run the process
 
 ```shell
 $ just
-just --list
+# just --list
 Available recipes:
-    build                     # build using forge
-    test                      # default test scripts
-    test-local *commands=""
-    test-mainnet *commands="" # run mainnet fork forge tests (all files with the extension .debug.sol)
+    build                     # [BUILD]: Timer
+    build-mainnet             # [TEST] mainnet test
+    deploy-contract           # [DEPLOY]: Deploy contract
+    dumpbuild                 # Executes a dump of ethers-rs solc compiler output into two json files
+    forge-gas-snapshot        # [GAS] get gas snapshot timer
+    forge-gas-snapshot-diff
+    gas-cov
+    gas-snapshot              # [GAS] default gas snapshot script
+    gas-snapshot-local        # [GAS] get gas snapshot from local tests and save it to file
+    size                      # Contract Size
+    sl
+    test                      # [TEST] default test scripts
+    test-debug *commands=""   # [TEST] run mainnet fork forge debug tests (all files with the extension .t.sol)
+    test-local *commands=""   # [TEST] run local forge test using --match-path <PATTERN>
+    test-mainnet *commands="" # [TEST] run mainnet fork forge tests (all files with the extension .t.sol)
+    tl
+    verify-contract           # [DEPLOY]: Verify contract
 ```
+
+### two-letter recipes
+
+```shell
+just tl
+```
+
+```makefile
+tl:
+    forge test --list
+
+sl:
+    forge snapshot --list
+```
+
 
 ### ZSH Completions
 

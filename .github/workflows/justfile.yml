@@ -1,0 +1,72 @@
+name: justfile
+
+on: push
+
+# ensure multiple CI processes are not running analysis on contracts
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request_target' && github.head_ref || github.ref }}
+  cancel-in-progress: true
+  
+env:
+  CI: true
+  COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+  PULL_NUMBER: ${{ github.event.pull_request.number }}
+  RUN_ID: ${{ github.run_id }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  pipeline:
+    name: Justfile ${{ matrix.just-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['ubuntu-latest']
+        just-version: [0.9.9, 0.10.0]
+
+
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: extractions/setup-just@v1
+
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Test
+      id: quicktest
+      run: |
+        [ "$(just --justfile __tests__/test.justfile)" = "Test..." ]
+      shell: bash
+
+  test-version:
+    needs: pipeline
+    strategy:
+      matrix:
+        just-version: [0.10.0]
+        
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Foundry
+      uses: foundry-rs/foundry-toolchain@v1
+      with:
+        version: nightly
+    - uses: extractions/setup-just@v1
+      with:
+        just-version: ${{ matrix.just-version }}
+
+    - name: Check version
+      run: just --version | grep -E "^just v?${{ matrix.just-version }}$"
+    - name: Test
+      id: justfile
+      run: |
+        [ "$(just --justfile __tests__/test.justfile)" = "Test..." ]
+
+
+    - name: foundry test package
+      id: foundry
+      run: |
+        cd __tests__; forge init --no-commit --no-git --force; 
+        echo $PWD
+        just dumpbuild
