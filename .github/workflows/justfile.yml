@@ -2,19 +2,34 @@ name: justfile
 
 on: push
 
+# ensure multiple CI processes are not running analysis on contracts
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request_target' && github.head_ref || github.ref }}
+  cancel-in-progress: true
+  
+env:
+  CI: true
+  COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+  PULL_NUMBER: ${{ github.event.pull_request.number }}
+  RUN_ID: ${{ github.run_id }}
+
 jobs:
   pipeline:
-    name: Justfile ${{ matrix.just-version }} on ${{ matrix.os }}
+    name: Node ${{ matrix.just-version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: ['ubuntu-latest']
+        just-version: [0.5.11, 0.6.1, 0.7.3, 0.8.7, 0.9.9, 0.10.0]
+
+
+
     steps:
     - uses: actions/checkout@v3
-    - name: Setup just
-      uses: ./
+    - uses: extractions/setup-just@v1
+
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Test
@@ -30,8 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Run self
-      uses: ./
+    - uses: extractions/setup-just@v1
       with:
         just-version: ${{ matrix.just-version }}
       env:
