@@ -35,7 +35,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Test
       run: |
-        [ "$(just --justfile __tests__/justfile)" = "Test..." ]
+        [ "$(just --justfile __tests__/test.justfile)" = "Test..." ]
       shell: bash
 
   test-version:
@@ -47,7 +47,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-
+    - name: Install Foundry
+      uses: foundry-rs/foundry-toolchain@v1
+      with:
+        version: nightly
     - uses: extractions/setup-just@v1
       with:
         just-version: ${{ matrix.just-version }}
@@ -57,12 +60,7 @@ jobs:
     - name: Test
       run: |
         [ "$(just --justfile __tests__/test.justfile)" = "Test..." ]
-        [ "$(just --justfile justfile)" = "Test..." ]
 
-    - name: Install Foundry
-      uses: foundry-rs/foundry-toolchain@v1
-      with:
-        version: nightly
 
     - name: setup foundry test package
       run: |
@@ -70,4 +68,4 @@ jobs:
 
     - name: dumpbuild
       run: |
-        [ "$(just --justfile __tests__/justfile)" = "dumpbuild" ]
+        [ "$(just dumpbuild __tests__/justfile)" = "dumpbuild" ]
