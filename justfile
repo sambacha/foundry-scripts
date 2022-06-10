@@ -1,6 +1,6 @@
 #!/usr/bin/env just --justfile
 # @title Foundry Justfile
-# @version: 0.4.1
+# @version: 0.4.2
 # @license Apache-2.0 OR MIT
 # @see {@link https://github.com/sambacha/foundry-scripts}
 
@@ -151,7 +151,4 @@ _timer:
 # mode: makefile
 # End:
 # vim: set ft=make :
-# Make sure this script ends with code 0
-:
-
 # vi: set ts=4 sw=4 noet :
