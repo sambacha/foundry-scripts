@@ -7,9 +7,9 @@
 ## Overview
 
 [![justfile](https://github.com/sambacha/foundry-scripts/actions/workflows/justfile.yml/badge.svg)](https://github.com/sambacha/foundry-scripts/actions/workflows/justfile.yml) 
-> GitHub Action verifes the recipes by creating a dummy foundry repo
 
 > `just` is the new `make`
+> 
 
 > load `.env` via `justfile`
 > run tests; etc;
@@ -17,6 +17,12 @@
 <br />
 
 ## Quickstart
+
+> download the latest `justfile`
+
+```shell
+curl https://raw.githubusercontent.com/sambacha/foundry-scripts/master/justfile --output justfile --silent
+```
 
 In your repo, you execute the command `just` and add a `recipe` after to run the process
 
