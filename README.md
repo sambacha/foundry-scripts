@@ -1,10 +1,14 @@
 # [`foundry-scripts`](https://github.com/sambacha/foundry-scripts)
 
-<img alt="a picture of justfile recipes" align="right" src="https://raw.githubusercontent.com/sambacha/foundry-scripts/c6b6ef62dd0197975a765d655feae4302088bcef/.github/readme_justfile.svg" height="300"></img>
+<img alt="a picture of justfile recipes" align="center" src="https://raw.githubusercontent.com/sambacha/foundry-scripts/c6b6ef62dd0197975a765d655feae4302088bcef/.github/readme_justfile.svg" height="500"></img>
 
 <br />
+
+<br />
+<br />
  
-## Overview
+
+<h3>tldr</h3>
 
 [![justfile](https://github.com/sambacha/foundry-scripts/actions/workflows/justfile.yml/badge.svg)](https://github.com/sambacha/foundry-scripts/actions/workflows/justfile.yml) 
 
