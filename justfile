@@ -11,6 +11,7 @@ export RUST_LOG := et
 log := "warn"
 export JUST_LOG := log
 
+# RUST_LOG=node,backend,api,rpc=warn anvil 
 _default:
     just --list
 
