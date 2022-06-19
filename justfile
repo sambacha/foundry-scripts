@@ -1,7 +1,7 @@
 #!/usr/bin/env just --justfile
 # @title Foundry Justfile
-# @version: 0.4.2
-# @license Apache-2.0 OR MIT
+# @version: 0.4.3
+# @license UPL-1.0
 # @see {@link https://github.com/sambacha/foundry-scripts}
 
 bt := '0'
@@ -23,6 +23,9 @@ sl:
 
 dumpbuild:
     ETHERS_SOLC_LOG=in=in.json,out=out.json;  forge build --force
+
+dumplists
+    FORGE_GAS_REPORT=''; forge test -l -j > test-list.json
 
 # load .env file
 
