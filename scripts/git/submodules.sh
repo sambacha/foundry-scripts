@@ -10,10 +10,10 @@ git config --global fetch.recurseSubmodules true
 sleep 1
 
 echo "[TASK]: Syncing submodules"
-git submodule sync --recursive && git submodule update --init --recursive || exit 127
+git submodule sync --recursive && git submodule update --init --recursive
 sleep 1
 
-git submodule foreach git reset --hard ^HEAD
+git submodule foreach git reset --hard HEAD
 git submodule update --remote --rebase lib/
 git status
 exit 0
