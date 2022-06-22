@@ -24,7 +24,7 @@ sl:
 dumpbuild:
     ETHERS_SOLC_LOG=in=in.json,out=out.json;  forge build --force
 
-dumplists
+dumplists:
     FORGE_GAS_REPORT=''; forge test -l -j > test-list.json
 
 # load .env file
