@@ -27,6 +27,11 @@ dumpbuild:
 dumplists:
     FORGE_GAS_REPORT=''; forge test -l -j > test-list.json
 
+# `get` works for non-standard variable names like `INPUT_CORPUS-DIR`.
+get() {
+    env | sed -n "s/^$1=\(.*\)/\1/;T;p"
+}
+
 # load .env file
 
 set dotenv-load := true
