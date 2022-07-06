@@ -34,6 +34,7 @@ sleep 1
 
 echo "[TASK]: Syncing submodules"
 git submodule sync --recursive && git submodule update --init --recursive --jobs=8
+git submodule foreach --recursive git clean -ffdx
 sleep 1
 
 
