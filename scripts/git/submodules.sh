@@ -33,13 +33,13 @@ sleep 1
 #
 
 echo "[TASK]: Syncing submodules"
-git submodule sync --recursive && git submodule update --init --recursive --jobs=8
+git submodule sync --recursive && git submodule update --init --recursive
 git submodule foreach --recursive git clean -ffdx
 sleep 1
 
 
 
-git submodule foreach git reset --hard HEAD --jobs=8
-git submodule update --remote --rebase lib/ --jobs=8
+git submodule foreach git reset --hard HEAD
+git submodule update --remote --rebase lib/
 git status
 exit 0
