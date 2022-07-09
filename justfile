@@ -37,9 +37,9 @@ set positional-arguments := true
 
 # sourced from https://github.com/sense-finance/sense-v1
 
-DAPP_BUILD_OPTIMIZE := "1"
-DAPP_COVERAGE := "1"
-DAPP_TEST_FUZZ_RUNS := "100"
+#DAPP_BUILD_OPTIMIZE := "1"
+#DAPP_COVERAGE := "1"
+#DAPP_TEST_FUZZ_RUNS := "100"
 
 # 1e18 decimals
 
