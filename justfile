@@ -1,6 +1,6 @@
 #!/usr/bin/env just --justfile
 # @title Foundry Justfile
-# @version: 0.4.3
+# @version: 0.4.4
 # @license UPL-1.0
 # @see {@link https://github.com/sambacha/foundry-scripts}
 
@@ -27,24 +27,13 @@ dumpbuild:
 dumplists:
     FORGE_GAS_REPORT=''; forge test -l -j > test-list.json
 
-# `get` works for non-standard variable names like `INPUT_CORPUS-DIR`.
-get() {
-    env | sed -n "s/^$1=\(.*\)/\1/;T;p"
-}
+
 
 # load .env file
-
 set dotenv-load := true
 
 # pass justfile recipe args as positional arguments to commands
-
 set positional-arguments := true
-
-# sourced from https://github.com/sense-finance/sense-v1
-
-#DAPP_BUILD_OPTIMIZE := "1"
-#DAPP_COVERAGE := "1"
-#DAPP_TEST_FUZZ_RUNS := "100"
 
 # 1e18 decimals
 
@@ -73,9 +62,9 @@ set export := true
 size:
     forge build --sizes --force
 
-# [DEPLOY]: Environemtn Config
+# [DEPLOY]: Env Config
 
-DEPLOYED_ADDRESS := "0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+DEPLOYED_ADDRESS := ''
 CONTRACT_NAME := ''
 ETHERSCAN_API_KEY := ''
 
