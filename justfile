@@ -11,7 +11,7 @@ export RUST_LOG := et
 log := "warn"
 export JUST_LOG := log
 
-# RUST_LOG=node,backend,api,rpc=warn anvil 
+# RUST_LOG=node,backend,api,rpc=warn anvil
 _default:
     just --list
 
@@ -27,12 +27,12 @@ dumpbuild:
 dumplists:
     FORGE_GAS_REPORT=''; forge test -l -j > test-list.json
 
-
-
 # load .env file
+
 set dotenv-load := true
 
 # pass justfile recipe args as positional arguments to commands
+
 set positional-arguments := true
 
 # 1e18 decimals
