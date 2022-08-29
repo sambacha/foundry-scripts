@@ -52,6 +52,13 @@ Available recipes:
     verify-contract           # [DEPLOY]: Verify contract
 ```
 
+## using ssh
+
+```bash
+USE_SSH=true
+GIT_USER=<GITHUB_USERNAME> forge deploy
+```
+
 ### Two Letter Recipes
 
 > TLR's
