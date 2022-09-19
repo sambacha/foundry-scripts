@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+failed_checkout() {
+  echo "Failed to git clone $1"
+  exit -1
+}
+
+checkout() {
+  [ -d "$2" ] || git -c advice.detachedHead=0 clone --branch "$3" --depth 1 "$1" "$2" || failed_checkout "$1"
+}
+
+if ! command -v git 1>/dev/null 2>&1; then
+  echo "✘ Git is not installed, can't continue." >&2
+  exit 1
+fi
+
+if [ -n "${USE_GIT_URI}" ]; then
+  GITHUB="git://github.com"
+else
+  GITHUB="https://github.com"
+fi
