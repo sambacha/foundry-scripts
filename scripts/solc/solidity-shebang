@@ -1,0 +1,6 @@
+#!/bin/sh
+
+tmpfile=$(mktemp --suffix=.sol /tmp/forge-script.XXXXXX)
+tail --lines=+2 "$@" >$tmpfile
+forge run $tmpfile
+rm $tmpfile
