@@ -20,6 +20,8 @@ echo "[CONFIG]: Updating and init submodules"
 git config --global diff.submodule log
 git config --global status.submoduleSummary true
 git config --global fetch.recurseSubmodules true
+git config --global push.recurseSubmodules on-demand
+
 sleep 1
 
 # 
